@@ -1,16 +1,33 @@
 import { useState } from "react";
-// import reactLogo from "./assets/react.svg";
-// import viteLogo from "/vite.svg";
-import { Employee } from "./component/Employee.jsx";
-import { Task } from "./component/Tasks.jsx";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { EditEmployees } from "./component/EditEmployee.jsx";
+import { Tasks } from "./pages/Tasks.jsx";
+import { Home } from "./pages/Home.jsx";
+import { Employee } from "./pages/Employee.jsx";
 
 function App() {
 	return (
 		<>
-			<h1>Task Tracker</h1>
-			<Employee />
-			<hr />
-			<Task />
+			<BrowserRouter>
+				<Routes>
+					<Route
+						path="/"
+						element={<Home />}
+					/>
+					<Route
+						path="/employee"
+						element={<Employee />}
+					/>
+					<Route
+						path="/editEmployees/:employee_id"
+						element={<EditEmployees />}
+					/>
+					<Route
+						path="/tasks/:tasks_id"
+						element={<Tasks />}
+					/>
+				</Routes>
+			</BrowserRouter>
 		</>
 	);
 }
