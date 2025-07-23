@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { EditEmployees } from "./component/EditEmployee.jsx";
 import { Tasks } from "./pages/Tasks.jsx";
 import { Home } from "./pages/Home.jsx";
 import { Employee } from "./pages/Employee.jsx";
+import { EditEmployee } from "./component/EditForm.jsx";
 
 function App() {
 	return (
@@ -19,8 +19,8 @@ function App() {
 						element={<Employee />}
 					/>
 					<Route
-						path="/editEmployees/:employee_id"
-						element={<EditEmployees />}
+						path="/editEmployee/:employee_id"
+						element={<EditEmployee />}
 					/>
 					<Route
 						path="/tasks/:tasks_id"

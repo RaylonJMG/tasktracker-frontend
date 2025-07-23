@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const baseUrl = VITE_API_BASE_URL;
 const endpoint = "/tasks";
 const endpoint2 = "/employee";
 
 export const TasksTable = () => {
+	const navigate = useNavigate();
+	const params = useParams();
 	const [tasks, setTasks] = useState([]);
 	const [employee, setEmployee] = useState({});
-
-	const params = useParams();
 
 	const getTasks = async () => {
 		const { task_id } = params;
