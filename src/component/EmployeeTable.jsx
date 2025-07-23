@@ -17,7 +17,7 @@ export const EmployeeTable = () => {
 		setEmployee(data);
 	};
 	const handleEdit = (id) => {
-		navigate("/editEmployee/${id}");
+		navigate(`/editEmployee/${id}`);
 	};
 	const handleDelete = async () => {
 		const url = `${baseUrl}${endpoint}/${id}`;
@@ -56,14 +56,15 @@ export const EmployeeTable = () => {
 								<td>{item.role}</td>
 								<td>
 									<button
+										type="button"
 										onClick={() => handleEdit(item.employee_id)}
 										className="btn btn-primary">
-										Edit
+										<i className="bi bi-pencil-square"></i>
 									</button>
 									<button
 										onClick={() => handleDelete(item.employee_id)}
 										className="btn btn-danger">
-										Delete
+										<i className="bi bi-person-x"></i>
 									</button>
 								</td>
 							</tr>

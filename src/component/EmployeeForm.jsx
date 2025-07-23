@@ -62,7 +62,12 @@ const EmployeeForm = () => {
 						/>
 					</div>
 					<br />
-					<button className="btn btn-primary">Save Data</button>
+					<input
+						type="submit"
+						onSubmit={han}
+						className="btn btn-primary">
+						Save Data
+					</input>
 				</form>
 			</main>
 		</>

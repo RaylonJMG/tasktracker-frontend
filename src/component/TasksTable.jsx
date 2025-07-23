@@ -57,7 +57,7 @@ export const TasksTable = () => {
 							<td>{item.status}</td>
 							<td>
 								<button
-									onClick={() => ha(item.task_id)}
+									onClick={() => handleTaskEdit(item.task_id)}
 									className="btn btn-primary">
 									Edit
 								</button>

@@ -82,7 +82,9 @@ export const EditEmployee = () => {
 							className="form-control"
 						/>
 					</div>
-					<button className="btn btn-primary">Save Data</button>
+					<button className="btn btn-primary">
+						<i class="bi bi-floppy"></i>
+					</button>
 				</form>
 			</main>
 		</>
