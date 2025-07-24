@@ -10,14 +10,14 @@ export const EmployeeTable = () => {
 	const [employee, setEmployee] = useState([]);
 
 	const getEmployee = async () => {
-		const { employee_id } = params;
+		// const { employee_id } = params;
 		const url = `${baseUrl}${endpoint}`;
 		const result = await fetch(url);
 		const data = await result.json();
 		setEmployee(data);
 	};
 	const handleEdit = (id) => {
-		navigate(`/editEmployee/${id}`);
+		navigate(`editEmployee/${id}`);
 	};
 	const handleDelete = async (id) => {
 		const url = `${baseUrl}${endpoint}/${id}`;

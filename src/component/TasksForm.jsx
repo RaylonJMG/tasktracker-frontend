@@ -10,7 +10,7 @@ export const TasksForm = () => {
 	const { task_id } = params;
 	const [tasks, setTasks] = useState({ task_id: task_id, tasks });
 
-	const handleTasksForm = (event) => {
+	const handleForm = (event) => {
 		const inputName = event.target.name;
 		const inputValue = event.target.value;
 		tasks[inputName] = inputValue;
@@ -42,7 +42,7 @@ export const TasksForm = () => {
 					<div>
 						<label>Task</label>
 						<input
-							onChange={handleTasksForm}
+							onChange={handleForm}
 							name="task_name"
 							type="text"
 						/>

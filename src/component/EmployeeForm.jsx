@@ -66,7 +66,6 @@ const EmployeeForm = () => {
 					<br />
 					<button
 						type="submit"
-						onClick={handleSubmit}
 						className="btn btn-primary">
 						Save Data
 					</button>

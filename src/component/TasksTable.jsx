@@ -21,11 +21,13 @@ export const TasksTable = () => {
 
 	const getEmployee = async () => {
 		const { employee_id } = params;
-		const url = `${baseUrl}${endpoint}/${employee_id}`;
+		const url = `${baseUrl}${endpoint2}/${employee_id}`;
 		const result = await fetch(url);
 		const data = await result.json();
 		setEmployee(data[0]);
 	};
+	const handleTaskEdit = async () => {};
+
 	const handleTaskDelete = async (id) => {
 		const url = `${baseUrl}${endpoint}/${id}`;
 		const result = await fetch(url, {
