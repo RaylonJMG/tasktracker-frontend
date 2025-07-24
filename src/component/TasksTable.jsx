@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-const baseUrl = VITE_API_BASE_URL;
-const endpoint = "/tasks";
-const endpoint2 = "/employee";
+const baseUrl = VITE_BASE_URL;
+const endpoint = "tasks";
+const endpoint2 = "employee";
 
 export const TasksTable = () => {
 	const navigate = useNavigate();

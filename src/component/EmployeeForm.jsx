@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 
+const baseUrl = import.meta.env.VITE_BASE_URL;
+const endpoint = "employee";
+
 const EmployeeForm = () => {
 	const [newEmployee, setNewEmployee] = useState({
 		name: "",
@@ -9,13 +12,12 @@ const EmployeeForm = () => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		//const inputs = event.target;
-		const url = baseUrl + endpoint;
+		const url = `${baseUrl}${endpoint}/${employee_id}`;
 		const result = await fetch(url, {
 			method: "POST",
 			body: JSON.stringify(newEmployee),
 			heders: {
-				"Content-Type": "json/application",
+				"Content-Type": "application/json",
 			},
 		});
 		const data = await result.json();
@@ -62,12 +64,12 @@ const EmployeeForm = () => {
 						/>
 					</div>
 					<br />
-					<input
+					<button
 						type="submit"
-						onSubmit={han}
+						onClick={handleSubmit}
 						className="btn btn-primary">
 						Save Data
-					</input>
+					</button>
 				</form>
 			</main>
 		</>

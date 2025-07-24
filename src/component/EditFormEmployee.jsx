@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
-const endpoint = "/employee";
+const baseUrl = import.meta.env.VITE_BASE_URL;
+const endpoint = "/editEmployee";
 
-export const EditEmployee = () => {
+export const EditFormEmployee = () => {
 	const navigate = useNavigate();
 	const params = useParams();
-	const [editEmployee, setEditEmployee] = useEffect({
+	const [editEmployee, setEditEmployee] = useState({
 		name: "",
 		department: "",
 		role: "",
@@ -17,16 +17,19 @@ export const EditEmployee = () => {
 		const inputName = event.target.name;
 		const inputValue = event.target.value;
 		editEmployee[inputName] = inputValue;
-		console.log(editEmployee);
+		// console.log("name", inputName);
+		// console.log("value", inputValue);
+		// console.log(editEmployee);
 	};
 
 	const getEmployeeById = async () => {
 		const { employee_id } = params;
-		const baseUrl = import.meta.env.VITE_API_BASE_URL;
+		const baseUrl = import.meta.env.VITE_BASE_URL;
 		const endpoint = "/employee";
 		const url = `${baseUrl}${endpoint}/${employee_id}`;
 		const result = await fetch(url);
 		const data = await result.json();
+		const { name, department, role } = element;
 		const element = data[0];
 		setEditEmployee({
 			name,
@@ -37,7 +40,8 @@ export const EditEmployee = () => {
 	const handleSubmit = async () => {
 		event.preventDefault();
 		const employee_id = params.employee_id;
-		const url = `${baseUrl}${endpoint}/${employee_id}`;
+		const url = `${baseUrl}/${endpoint}/${employee_id}`;
+		console.log(url);
 		const result = await fetch(url, {
 			method: "PUT",
 			body: JSON.stringify(editEmployee),
@@ -46,7 +50,7 @@ export const EditEmployee = () => {
 			},
 		});
 		const data = await result.json();
-		navigate("/employee");
+		console.log(data);
 	};
 
 	useEffect(() => {
@@ -55,12 +59,13 @@ export const EditEmployee = () => {
 
 	return (
 		<>
-			<h1>Employee Form</h1>
+			<h1>Edit Employee Form</h1>
 			<main className="container">
 				<form onSubmit={handleSubmit}>
 					<div>
 						<label className="form-label">Name</label>
 						<input
+							name="name"
 							onChange={handleForm}
 							type="text"
 							className="form-control"
@@ -69,6 +74,7 @@ export const EditEmployee = () => {
 					<div>
 						<label className="form-label">Department</label>
 						<input
+							name="department"
 							onChange={handleForm}
 							type="text"
 							className="form-control"
@@ -77,13 +83,16 @@ export const EditEmployee = () => {
 					<div>
 						<label className="form-label">Role</label>
 						<input
+							name="role"
 							onChange={handleForm}
 							type="text"
 							className="form-control"
 						/>
 					</div>
-					<button className="btn btn-primary">
-						<i class="bi bi-floppy"></i>
+					<button
+						name="Save"
+						className="btn btn-primary">
+						<i className="bi bi-floppy">Save Data</i>
 					</button>
 				</form>
 			</main>
