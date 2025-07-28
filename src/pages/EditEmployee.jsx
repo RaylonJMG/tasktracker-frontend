@@ -1,6 +1,6 @@
 import React from "react";
-import { EditFormEmployee } from "../component/EditFormEmployee";
+import { EditEmployeeForm } from "../component/EditEmployeeForm.jsx";
 
 export const EditEmployee = () => {
-	return <EditFormEmployee />;
+	return <EditEmployeeForm />;
 };

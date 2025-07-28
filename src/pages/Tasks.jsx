@@ -1,6 +1,6 @@
 import React from "react";
-import { TasksTable } from "../component/TasksTable";
-import TasksForm from "../component/TasksForm";
+import { TasksTable } from "../component/TasksTable.jsx";
+import TasksForm from "../component/TasksForm.jsx";
 
 export const Tasks = () => {
 	return (

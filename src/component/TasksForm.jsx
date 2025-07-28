@@ -5,35 +5,36 @@ const baseUrl = import.meta.env.VITE_BASE_URL;
 const endpoint = "tasks";
 
 export const TasksForm = () => {
-	const params = useParams();
 	const navigate = useNavigate();
+	const params = useParams();
 	const { task_id } = params;
-	const [tasks, setTasks] = useState({ task_id: task_id, tasks });
+	const [tasks, setTasks] = useState({ task_id: task_id });
 
 	const handleForm = (event) => {
+		event.preventDefault();
 		const inputName = event.target.name;
 		const inputValue = event.target.value;
 		tasks[inputName] = inputValue;
 	};
-
-	const handleSubmit = async () => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
-		const url = `${baseUrl}${endpoint}`;
+		const url = `${baseUrl}${endpoint}/${task_id}`;
 		const result = await fetch(url, {
 			method: "POST",
-			body: JSON.stringify(task),
-			headers: {
+			body: JSON.stringify(tasks),
+			heders: {
 				"Content-Type": "application/json",
 			},
 		});
 		const data = await result.json();
-
+		setTasks(data);
 		window.location.reload();
 	};
 
 	const handleReturn = () => {
 		navigate("/employee");
 	};
+
 	return (
 		<>
 			<h1>Tasks</h1>
@@ -47,13 +48,29 @@ export const TasksForm = () => {
 							type="text"
 						/>
 					</div>
+					<div>
+						<label>Description</label>
+						<input
+							onChange={handleForm}
+							name="task_description"
+							type="text"
+						/>
+					</div>
+					<div>
+						<label>Status</label>
+						<input
+							onChange={handleForm}
+							name="task_status"
+							type="text"
+						/>
+					</div>
 					<button className="btn btn-primary">Save</button>
+					<button
+						className="btn btn-danger"
+						onClick={handleReturn}>
+						Return
+					</button>
 				</form>
-				<button
-					className="btn btn-danger"
-					onClick={handleReturn}>
-					Return
-				</button>
 			</main>
 		</>
 	);

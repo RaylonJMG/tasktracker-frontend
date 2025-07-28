@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-const baseUrl = VITE_BASE_URL;
+const baseUrl = import.meta.env.VITE_BASE_URL;
 const endpoint = "tasks";
 const endpoint2 = "employee";
 
@@ -26,14 +26,22 @@ export const TasksTable = () => {
 		const data = await result.json();
 		setEmployee(data[0]);
 	};
-	const handleTaskEdit = async () => {};
+
+	const handleTaskEdit = (id) => {
+		navigate(`/editTasks/${id}`);
+	};
 
 	const handleTaskDelete = async (id) => {
 		const url = `${baseUrl}${endpoint}/${id}`;
 		const result = await fetch(url, {
 			method: "DELETE",
 		});
+		const data = await result.json();
 		window.location.reload();
+	};
+
+	const handleTasks = (id) => {
+		navigate(`/tasks/${id}`);
 	};
 
 	useEffect(() => {
@@ -66,6 +74,11 @@ export const TasksTable = () => {
 								<button
 									onClick={() => handleTaskDelete(item.task_id)}
 									className="btn btn-danger">
+									Delete
+								</button>
+								<button
+									onClick={() => handleTasks(item.task_id)}
+									className="btn btn-info">
 									Delete
 								</button>
 							</td>
