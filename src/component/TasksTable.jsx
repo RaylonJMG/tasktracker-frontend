@@ -14,15 +14,27 @@ export const TasksTable = () => {
 	const getTasks = async () => {
 		const { task_id } = params;
 		const url = `${baseUrl}${endpoint}/${task_id}`;
-		const result = await fetch(url);
+		const token = localStorage.getItem("token");
+		const result = await fetch(url, {
+			method: "GET",
+			headers: {
+				Authorization: token,
+			},
+		});
 		const data = await result.json();
 		setTasks(data);
 	};
 
 	const getEmployee = async () => {
 		const { employee_id } = params;
+		const token = localStorage.getItem("token");
 		const url = `${baseUrl}${endpoint2}/${employee_id}`;
-		const result = await fetch(url);
+		const result = await fetch(url, {
+			method: "GET",
+			headers: {
+				Authorization: token,
+			},
+		});
 		const data = await result.json();
 		setEmployee(data[0]);
 	};
@@ -33,15 +45,15 @@ export const TasksTable = () => {
 
 	const handleTaskDelete = async (id) => {
 		const url = `${baseUrl}${endpoint}/${id}`;
+		const token = localStorage.getItem("token");
 		const result = await fetch(url, {
 			method: "DELETE",
+			headers: {
+				Authorization: token,
+			},
 		});
 		const data = await result.json();
 		window.location.reload();
-	};
-
-	const handleTasks = (id) => {
-		navigate(`/tasks/${id}`);
 	};
 
 	useEffect(() => {
@@ -74,11 +86,6 @@ export const TasksTable = () => {
 								<button
 									onClick={() => handleTaskDelete(item.task_id)}
 									className="btn btn-danger">
-									Delete
-								</button>
-								<button
-									onClick={() => handleTasks(item.task_id)}
-									className="btn btn-info">
 									Delete
 								</button>
 							</td>

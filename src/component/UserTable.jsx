@@ -6,13 +6,17 @@ const endpoint = "users";
 
 export const UserTable = () => {
 	const navigate = useNavigate();
-	const params = useParams();
 	const [user, setUser] = useState([]);
 
 	const getUser = async () => {
-		const { user_id } = params;
 		const url = baseUrl + endpoint;
-		const result = await fetch(url);
+		const token = localStorage.getItem("token");
+		const result = await fetch(url, {
+			method: "GET",
+			headers: {
+				Authorization: token,
+			},
+		});
 		const data = await result.json();
 		setUser(data);
 	};
@@ -21,8 +25,12 @@ export const UserTable = () => {
 	};
 	const handleDelete = async (id) => {
 		const url = `${baseUrl}${endpoint}/${id}`;
+		const token = localStorage.getItem("token");
 		const result = await fetch(url, {
 			method: "DELETE",
+			headers: {
+				Authorization: token,
+			},
 		});
 		const data = await result.json();
 		window.location.reload();
@@ -72,9 +80,7 @@ export const UserTable = () => {
 									<button
 										type="button"
 										onClick={() => handleUsers(item.user_id)}
-										className="btn btn-info">
-										AddTasks
-									</button>
+										className="btn btn-info"></button>
 								</td>
 							</tr>
 						))}
