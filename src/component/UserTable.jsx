@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
-const endpoint = "users";
+const endpoint = "user";
 
 export const UserTable = () => {
 	const navigate = useNavigate();
@@ -14,7 +14,7 @@ export const UserTable = () => {
 		const result = await fetch(url, {
 			method: "GET",
 			headers: {
-				Authorization: token,
+				authorization: token,
 			},
 		});
 		const data = await result.json();
@@ -25,18 +25,18 @@ export const UserTable = () => {
 	};
 	const handleDelete = async (id) => {
 		const url = `${baseUrl}${endpoint}/${id}`;
-		const token = localStorage.getItem("token");
+		const token = localStorage.removeItem("token");
 		const result = await fetch(url, {
 			method: "DELETE",
 			headers: {
-				Authorization: token,
+				authorization: token,
 			},
 		});
 		const data = await result.json();
 		window.location.reload();
 	};
 	const handleUsers = (id) => {
-		navigate(`/users/${id}`);
+		navigate(`/user/${id}`);
 	};
 
 	useEffect(() => {

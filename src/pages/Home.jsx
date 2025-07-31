@@ -10,12 +10,12 @@ export const Home = ({ login }) => {
 	const [body, setBody] = useState({ username: "", password: "" });
 
 	const handleForm = (event) => {
-		const temp = {
+		const formInput = {
 			username: body.username,
 			password: body.password,
 		};
-		temp[event.target.name] = event.target.value;
-		setBody(temp);
+		formInput[event.target.name] = event.target.value;
+		setBody(formInput);
 	};
 
 	const handleSubmit = async (event) => {
@@ -31,11 +31,11 @@ export const Home = ({ login }) => {
 
 		if (result.ok) {
 			const data = await result.json();
-			localStorage.getItem("token", data.token);
+			localStorage.setItem("token", data.token);
 			login(true);
-			navigate("/users");
+			navigate("/employee");
 		} else {
-			setResultLogin("Invalid Credentials");
+			setResultLogin("Invalid Credentials. Please try again.");
 		}
 	};
 
@@ -65,10 +65,10 @@ export const Home = ({ login }) => {
 								className="form-control"
 							/>
 						</div>
-						{resultLogIn}
+						<p>{resultLogIn}</p>
 						<button className="btn btn-primary w-100">Log In</button>
 					</form>
-					<button className="btn btn-secondary  w-100">Register</button>
+					<button className="btn btn-secondary mt-3 w-100">Register</button>
 				</div>
 			</div>
 		</>

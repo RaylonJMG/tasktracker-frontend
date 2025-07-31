@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home.jsx";
 import { Employee } from "./pages/Employee.jsx";
-import { EditEmployee } from "./pages/EditEmployee.jsx";
 import { Tasks } from "./pages/Tasks.jsx";
-import { Users } from "./pages/Users.jsx";
+import { User } from "./pages/User.jsx";
 import { NavBar } from "./component/NavBar.jsx";
+import { EditEmployee } from "./component/EditEmployee.jsx";
 
 function App() {
 	const [isLoggedIn, setLoggedIn] = useState(false);
@@ -54,14 +54,8 @@ function App() {
 					)}
 					{isLoggedIn && (
 						<Route
-							path="/users"
-							element={<Users />}
-						/>
-					)}
-					{isLoggedIn && (
-						<Route
-							path="/users/:user_id"
-							element={<Users />}
+							path="/user"
+							element={<User />}
 						/>
 					)}
 				</Routes>

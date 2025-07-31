@@ -13,11 +13,13 @@ const EmployeeForm = () => {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		const url = `${baseUrl}${endpoint}/${employee_id}`;
+		const token = localStorage.getItem("token");
 		const result = await fetch(url, {
 			method: "POST",
 			body: JSON.stringify(newEmployee),
-			heders: {
+			headers: {
 				"Content-Type": "application/json",
+				authorization: token,
 			},
 		});
 		const data = await result.json();
@@ -37,7 +39,9 @@ const EmployeeForm = () => {
 	return (
 		<>
 			<h1>Employee Form</h1>
-			<main className="container">
+			<main
+				main
+				className="container">
 				<form onSubmit={handleSubmit}>
 					<div>
 						<label className="form-label">Name</label>

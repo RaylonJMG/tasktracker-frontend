@@ -16,7 +16,7 @@ export const EmployeeTable = () => {
 		const result = await fetch(url, {
 			method: "GET",
 			headers: {
-				Authorization: token,
+				authorization: token,
 			},
 		});
 		const data = await result.json();
@@ -27,11 +27,11 @@ export const EmployeeTable = () => {
 	};
 	const handleDelete = async (id) => {
 		const url = `${baseUrl}${endpoint}/${id}`;
-		const token = localStorage.getItem("token");
+		const token = localStorage.removeItem("token");
 		const result = await fetch(url, {
 			method: "DELETE",
 			headers: {
-				Authorization: token,
+				authorization: token,
 			},
 		});
 		const data = await result.json();

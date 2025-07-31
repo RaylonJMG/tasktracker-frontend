@@ -18,8 +18,8 @@ export const NavBar = ({ login }) => {
 				<div className="container-fluid">
 					<a
 						className="navbar-brand"
-						href="/employee">
-						Employee Contact List
+						href="/user">
+						Contact List
 					</a>
 					<button
 						className="navbar-toggler"
@@ -38,7 +38,7 @@ export const NavBar = ({ login }) => {
 							<li className="nav-item">
 								<a
 									className="nav-link active"
-									href="/employee">
+									href="/user">
 									Home
 									<span className="visually-hidden">(current)</span>
 								</a>

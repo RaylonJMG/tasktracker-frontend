@@ -19,11 +19,13 @@ export const TasksForm = () => {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		const url = `${baseUrl}${endpoint}/${task_id}`;
+		const token = localStorage.getItem("token");
 		const result = await fetch(url, {
 			method: "POST",
 			body: JSON.stringify(tasks),
-			heders: {
+			headers: {
 				"Content-Type": "application/json",
+				authorization: token,
 			},
 		});
 		const data = await result.json();
