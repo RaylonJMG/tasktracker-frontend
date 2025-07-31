@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
 const endpoint = "register";
 
 export const RegisterUser = () => {
+	const navigate = useNavigate();
 	const [newUser, setNewUser] = useState({
 		username: "",
 		password: "",
@@ -15,7 +17,7 @@ export const RegisterUser = () => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		const url = `${baseUrl}${endpoint}/${User_id}`;
+		const url = `${baseUrl}${endpoint}`;
 		const token = localStorage.getItem("token");
 		const result = await fetch(url, {
 			method: "POST",
@@ -39,7 +41,7 @@ export const RegisterUser = () => {
 		newUser.first_name = event.target.value;
 	};
 	const handleLast_Name = (event) => {
-		newUser.first_name = event.target.value;
+		newUser.last_name = event.target.value;
 	};
 	const handlePhone = (event) => {
 		newUser.phone = event.target.value;
@@ -52,7 +54,7 @@ export const RegisterUser = () => {
 	};
 	return (
 		<>
-			<h1>Employee Form</h1>
+			<h1>Registeration Form</h1>
 			<main className="container">
 				<form onSubmit={handleSubmit}>
 					<div>

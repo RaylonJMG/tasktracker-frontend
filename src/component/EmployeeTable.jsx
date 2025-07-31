@@ -27,7 +27,7 @@ export const EmployeeTable = () => {
 	};
 	const handleDelete = async (id) => {
 		const url = `${baseUrl}${endpoint}/${id}`;
-		const token = localStorage.removeItem("token");
+		const token = localStorage.getItem("token");
 		const result = await fetch(url, {
 			method: "DELETE",
 			headers: {

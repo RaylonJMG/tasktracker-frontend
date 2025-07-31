@@ -50,7 +50,7 @@ export const Home = ({ login }) => {
 						<div className="mb-3">
 							<label className="form-label">Username</label>
 							<input
-								name="text"
+								name="username"
 								onChange={handleForm}
 								type="text"
 								className="form-control"

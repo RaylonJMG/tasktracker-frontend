@@ -39,9 +39,7 @@ const EmployeeForm = () => {
 	return (
 		<>
 			<h1>Employee Form</h1>
-			<main
-				main
-				className="container">
+			<main className="container">
 				<form onSubmit={handleSubmit}>
 					<div>
 						<label className="form-label">Name</label>
