@@ -2,34 +2,38 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
-const endpoint = "editEmployee";
+const endpoint = "editUser";
 
-export const EditEmployee = () => {
+export const EditUser = () => {
 	const navigate = useNavigate();
 	const params = useParams();
-	const [editEmployee, setEditEmployee] = useState({
-		name: "",
-		department: "",
-		role: "",
+	const [editUser, setEditUser] = useState({
+		username: "",
+		password: "",
+		first_name: "",
+		last_name: "",
+		phone: "",
 	});
 
 	const handleForm = (event) => {
 		event.preventDefault();
-		const { name, department, role } = event.target;
 		const formInput = {
-			name: editEmployee.name,
-			department: editEmployee.department,
-			role: editEmployee.role,
+			username: editUser.username,
+			password: editUser.password,
+			first_name: editUser.first_name,
+			last_name: editUser.last_name,
+			phone: editUser.phone,
 		};
 		formInput[event.target.name] = event.target.value;
-		setEditEmployee(formInput);
+		setEditUser(formInput);
 	};
 
-	const getEmployeeById = async () => {
-		const { employee_id } = params;
+	const getUserById = async () => {
+		const { user_id } = params;
 		const baseUrl = import.meta.env.VITE_BASE_URL;
-		const url = `${baseUrl}${endpoint}/${employee_id}`;
+		const endpoint = "user";
 		const token = localStorage.getItem("token");
+		const url = `${baseUrl}${endpoint}/${user_id}`;
 		const result = await fetch(url, {
 			headers: {
 				authorization: token,
@@ -37,14 +41,15 @@ export const EditEmployee = () => {
 		});
 		const data = await result.json();
 		const element = data[0];
-		const { name, department, role } = element;
+		const {} = element;
 
-		setEditEmployee({
-			name,
-			department,
-			role,
+		setEditUser({
+			username,
+			password,
+			first_name,
+			last_name,
+			phone,
 		});
-		console.log(name);
 	};
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -53,7 +58,7 @@ export const EditEmployee = () => {
 		const token = localStorage.getItem("token");
 		const result = await fetch(url, {
 			method: "PUT",
-			body: JSON.stringify(editEmployee),
+			body: JSON.stringify(editUser),
 			headers: {
 				"Content-type": "application/json",
 				authorization: token,
@@ -64,7 +69,7 @@ export const EditEmployee = () => {
 	};
 
 	useEffect(() => {
-		getEmployeeById();
+		getUserById();
 	}, []);
 
 	return (
@@ -99,12 +104,11 @@ export const EditEmployee = () => {
 							className="form-control"
 						/>
 					</div>
-					<br />
 					<button
 						type="submit"
 						name="Save"
-						className="btn btn-secondary">
-						<i className="bi bi-floppy"> Save Data</i>
+						className="btn btn-primary">
+						<i className="bi bi-floppy">Save Data</i>
 					</button>
 				</form>
 			</main>

@@ -52,6 +52,7 @@ export const EmployeeTable = () => {
 				<table className="table container text-align:center table-responsive">
 					<thead>
 						<tr>
+							<th>ID</th>
 							<th>Name</th>
 							<th>Department</th>
 							<th>Role</th>
@@ -61,6 +62,7 @@ export const EmployeeTable = () => {
 					<tbody className="table-group-divider">
 						{employee.map((item) => (
 							<tr key={item.employee_id}>
+								<td>{item.employee_id}</td>
 								<td>{item.name}</td>
 								<td>{item.department}</td>
 								<td>{item.role}</td>

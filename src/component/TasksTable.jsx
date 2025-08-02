@@ -39,10 +39,6 @@ export const TasksTable = () => {
 		setEmployee(data[0]);
 	};
 
-	const handleTaskEdit = (id) => {
-		navigate(`/editTasks/${id}`);
-	};
-
 	const handleTaskDelete = async (id) => {
 		const url = `${baseUrl}${endpoint}/${id}`;
 		const token = localStorage.getItem("token");
@@ -77,12 +73,8 @@ export const TasksTable = () => {
 						<tr key={item.task_id}>
 							<td>{item.description}</td>
 							<td>{item.status}</td>
+							<td>{item.employee_id}</td>
 							<td>
-								<button
-									onClick={() => handleTaskEdit(item.task_id)}
-									className="btn btn-primary">
-									Edit
-								</button>
 								<button
 									onClick={() => handleTaskDelete(item.task_id)}
 									className="btn btn-danger">

@@ -6,6 +6,7 @@ import { Tasks } from "./pages/Tasks.jsx";
 import { User } from "./pages/User.jsx";
 import { NavBar } from "./component/NavBar.jsx";
 import { EditEmployee } from "./component/EditEmployee.jsx";
+import { RegisterUser } from "./component/RegisterUser.jsx";
 
 function App() {
 	const [isLoggedIn, setLoggedIn] = useState(false);
@@ -58,6 +59,10 @@ function App() {
 							element={<User />}
 						/>
 					)}
+					<Route
+						path="/register"
+						element={<RegisterUser />}
+					/>
 				</Routes>
 			</BrowserRouter>
 		</>

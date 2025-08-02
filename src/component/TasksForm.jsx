@@ -39,38 +39,54 @@ export const TasksForm = () => {
 
 	return (
 		<>
-			<h1>Tasks</h1>
+			<h1 className="text-center">Task Management</h1>
 			<main className="container">
-				<form onSubmit={handleSubmit}>
+				<form
+					onSubmit={handleSubmit}
+					className="mt-5">
 					<div>
-						<label>Task</label>
+						<label className="form-label">Task ID</label>
 						<input
+							className="form-control"
+							onChange={handleForm}
+							name="task_id"
+							type="text"
+						/>
+						<label className="form-label">Task Name</label>
+						<input
+							className="form-control"
 							onChange={handleForm}
 							name="task_name"
 							type="text"
 						/>
 					</div>
 					<div>
-						<label>Description</label>
+						<label className="form-label">Description</label>
 						<input
+							className="form-control"
 							onChange={handleForm}
 							name="task_description"
 							type="text"
 						/>
 					</div>
 					<div>
-						<label>Status</label>
+						<label className="form-label">Status</label>
 						<input
+							className="form-control"
 							onChange={handleForm}
 							name="task_status"
 							type="text"
 						/>
 					</div>
-					<button className="btn btn-primary">Save</button>
 					<button
-						className="btn btn-danger"
+						onClick={handleSubmit}
+						className="btn btn-primary">
+						Save
+					</button>
+					<button
+						className="btn btn-danger m-3"
 						onClick={handleReturn}>
-						Return
+						Cancel
 					</button>
 				</form>
 			</main>

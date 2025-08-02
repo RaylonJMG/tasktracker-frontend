@@ -12,19 +12,16 @@ export const RegisterUser = () => {
 		first_name: "",
 		last_name: "",
 		phone: "",
-		email: "",
 	});
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		const url = `${baseUrl}${endpoint}`;
-		const token = localStorage.getItem("token");
 		const result = await fetch(url, {
 			method: "POST",
 			body: JSON.stringify(newUser),
 			headers: {
 				"Content-Type": "application/json",
-				authorization: token,
 			},
 		});
 		const data = await result.json();
@@ -46,15 +43,12 @@ export const RegisterUser = () => {
 	const handlePhone = (event) => {
 		newUser.phone = event.target.value;
 	};
-	const handleEmail = (event) => {
-		newUser.email = event.target.value;
-	};
 	const handleReturn = () => {
-		navigate("/user");
+		navigate("/login");
 	};
 	return (
 		<>
-			<h1>Registeration Form</h1>
+			<h1>Registration Form</h1>
 			<main className="container">
 				<form onSubmit={handleSubmit}>
 					<div>
@@ -63,14 +57,16 @@ export const RegisterUser = () => {
 							onChange={handleUsername}
 							type="text"
 							className="form-control"
+							required
 						/>
 					</div>
 					<div>
 						<label className="form-label">Password</label>
 						<input
 							onChange={handlePassword}
-							type="text"
+							type="password"
 							className="form-control"
+							required
 						/>
 					</div>
 					<div>
@@ -95,18 +91,12 @@ export const RegisterUser = () => {
 							onChange={handlePhone}
 							type="text"
 							className="form-control"
-						/>
-					</div>
-					<div>
-						<label className="form-label">Email</label>
-						<input
-							onChange={handleEmail}
-							type="text"
-							className="form-control"
+							placeholder="5551234567"
 						/>
 					</div>
 					<br />
 					<button
+						onClick={handleReturn}
 						type="submit"
 						className="btn btn-primary">
 						Save Data
@@ -121,5 +111,3 @@ export const RegisterUser = () => {
 		</>
 	);
 };
-
-export default RegisterUser;

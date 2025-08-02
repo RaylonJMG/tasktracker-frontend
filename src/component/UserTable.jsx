@@ -8,7 +8,7 @@ export const UserTable = () => {
 	const navigate = useNavigate();
 	const [user, setUser] = useState([]);
 
-	const getUser = async () => {
+	const getAllUsers = async () => {
 		const url = baseUrl + endpoint;
 		const token = localStorage.getItem("token");
 		const result = await fetch(url, {
@@ -40,12 +40,12 @@ export const UserTable = () => {
 	};
 
 	useEffect(() => {
-		getUser();
+		getAllUsers();
 	}, []);
 
 	return (
 		<>
-			<h1>User Database</h1>
+			<h1>User Registry</h1>
 			<div className="table-responsive">
 				<table className="table container text-align:center table-responsive">
 					<thead>

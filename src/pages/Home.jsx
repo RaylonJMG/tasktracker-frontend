@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { data, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
 const endpoint = "login";
@@ -43,9 +43,9 @@ export const Home = ({ login }) => {
 		<>
 			<div className="container vh-100 d-flex align-items-center justify-content-center">
 				<div
-					className="card p-2"
+					className="card p-4"
 					style={{ maxWidth: "60%", width: "100%" }}>
-					<h3 className="text-center mb-2">Log In</h3>
+					<h3 className="text-center mb-2">User Log In</h3>
 					<form onSubmit={handleSubmit}>
 						<div className="mb-3">
 							<label className="form-label">Username</label>
