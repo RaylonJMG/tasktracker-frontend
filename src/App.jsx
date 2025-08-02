@@ -26,8 +26,12 @@ function App() {
 				{isLoggedIn && <NavBar login={setLoggedIn} />}
 				<Routes>
 					<Route
-						path="/"
+						path="/login"
 						element={<Home login={setLoggedIn} />}
+					/>
+					<Route
+						path="/register"
+						element={<RegisterUser />}
 					/>
 					{isLoggedIn && (
 						<Route
@@ -59,10 +63,6 @@ function App() {
 							element={<User />}
 						/>
 					)}
-					<Route
-						path="/register"
-						element={<RegisterUser />}
-					/>
 				</Routes>
 			</BrowserRouter>
 		</>

@@ -21,21 +21,24 @@ export const Home = ({ login }) => {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		const url = `${baseUrl}${endpoint}`;
-		const result = await fetch(url, {
-			method: "POST",
-			body: JSON.stringify(body),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
-
-		if (result.ok) {
-			const data = await result.json();
-			localStorage.setItem("token", data.token);
-			login(true);
-			navigate("/employee");
-		} else {
-			setResultLogin("Invalid Credentials. Please try again.");
+		try {
+			const result = await fetch(url, {
+				method: "POST",
+				body: JSON.stringify(body),
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
+			if (result.ok) {
+				const data = await result.json();
+				localStorage.setItem("token", data.token);
+				login(true);
+				navigate("/employee");
+			} else {
+				setResultLogin("Invalid Credentials. Please try again.");
+			}
+		} catch (error) {
+			setResultLogin("Network error. Please try again later.");
 		}
 	};
 
@@ -54,6 +57,7 @@ export const Home = ({ login }) => {
 								onChange={handleForm}
 								type="text"
 								className="form-control"
+								required
 							/>
 						</div>
 						<div className="mb-3">
@@ -63,12 +67,17 @@ export const Home = ({ login }) => {
 								onChange={handleForm}
 								type="password"
 								className="form-control"
+								required
 							/>
 						</div>
 						<p>{resultLogIn}</p>
 						<button className="btn btn-primary w-100">Log In</button>
 					</form>
-					<button className="btn btn-secondary mt-3 w-100">Register</button>
+					<button
+						className="btn btn-secondary mt-3 w-100"
+						onClick={() => navigate("/register")}>
+						Register
+					</button>
 				</div>
 			</div>
 		</>
