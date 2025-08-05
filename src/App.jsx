@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home.jsx";
 import { Employee } from "./pages/Employee.jsx";
 import { Tasks } from "./pages/Tasks.jsx";
-import { User } from "./pages/User.jsx";
+//import { User } from "./pages/User.jsx";
 import { NavBar } from "./component/NavBar.jsx";
 import { EditEmployee } from "./component/EditEmployee.jsx";
 import { RegisterUser } from "./component/RegisterUser.jsx";
@@ -26,7 +26,7 @@ function App() {
 				{isLoggedIn && <NavBar login={setLoggedIn} />}
 				<Routes>
 					<Route
-						path="/login"
+						path="/"
 						element={<Home login={setLoggedIn} />}
 					/>
 					<Route
@@ -57,12 +57,18 @@ function App() {
 							element={<Tasks />}
 						/>
 					)}
-					{isLoggedIn && (
+					{/* {isLoggedIn && (
 						<Route
 							path="/user"
 							element={<User />}
 						/>
 					)}
+					{isLoggedIn && (
+						<Route
+							path="/users/:user_id"
+							element={<User />}
+						/>
+					)} */}
 				</Routes>
 			</BrowserRouter>
 		</>

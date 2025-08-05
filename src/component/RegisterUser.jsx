@@ -48,7 +48,6 @@ export const RegisterUser = () => {
 	};
 	return (
 		<>
-			<h1>Registration Form</h1>
 			<main className="container">
 				<form onSubmit={handleSubmit}>
 					<div>

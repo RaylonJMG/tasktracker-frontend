@@ -45,13 +45,6 @@ export const TasksForm = () => {
 					onSubmit={handleSubmit}
 					className="mt-5">
 					<div>
-						<label className="form-label">Task ID</label>
-						<input
-							className="form-control"
-							onChange={handleForm}
-							name="task_id"
-							type="text"
-						/>
 						<label className="form-label">Task Name</label>
 						<input
 							className="form-control"
@@ -78,11 +71,7 @@ export const TasksForm = () => {
 							type="text"
 						/>
 					</div>
-					<button
-						onClick={handleSubmit}
-						className="btn btn-primary">
-						Save
-					</button>
+					<button className="btn btn-primary">Save</button>
 					<button
 						className="btn btn-danger m-3"
 						onClick={handleReturn}>

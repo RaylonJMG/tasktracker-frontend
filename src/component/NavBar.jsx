@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const NavBar = ({ login }) => {
 	const navigate = useNavigate();
@@ -16,11 +16,11 @@ export const NavBar = ({ login }) => {
 				className="navbar navbar-expand-lg bg-light"
 				data-bs-theme="light">
 				<div className="container-fluid">
-					<a
+					<Link
 						className="navbar-brand"
-						href="/user">
-						Contact List
-					</a>
+						to="/employee">
+						Task Management System
+					</Link>
 					<button
 						className="navbar-toggler"
 						type="button"
@@ -36,12 +36,18 @@ export const NavBar = ({ login }) => {
 						id="navbarColor03">
 						<ul className="navbar-nav me-auto">
 							<li className="nav-item">
-								<a
-									className="nav-link active"
-									href="/user">
-									Home
-									<span className="visually-hidden">(current)</span>
-								</a>
+								<Link
+									className="nav-link"
+									to="/employee">
+									Employee Database
+								</Link>
+							</li>
+							<li className="nav-item">
+								<Link
+									className="nav-link"
+									to="/tasks">
+									Tasks List
+								</Link>
 							</li>
 						</ul>
 						<div className="d-flex">

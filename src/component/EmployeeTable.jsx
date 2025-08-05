@@ -83,7 +83,7 @@ export const EmployeeTable = () => {
 										type="button"
 										onClick={() => handleTasks(item.employee_id)}
 										className="btn btn-info">
-										AddTasks
+										Tasks
 									</button>
 								</td>
 							</tr>
