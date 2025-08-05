@@ -15,13 +15,13 @@ export const EditEmployee = () => {
 
 	const handleForm = (event) => {
 		event.preventDefault();
-		const { name, department, role } = event.target;
+		const { name, value } = event.target;
 		const formInput = {
 			name: editEmployee.name,
 			department: editEmployee.department,
 			role: editEmployee.role,
 		};
-		formInput[event.target.name] = event.target.value;
+		formInput[name] = value;
 		setEditEmployee(formInput);
 	};
 
@@ -39,14 +39,14 @@ export const EditEmployee = () => {
 		const element = data[0];
 		const { name, department, role } = element;
 
-		setEditEmployee({
-			name,
-			department,
-			role,
-		});
-		console.log(name);
+		const formInput = {
+			name: name,
+			department: department,
+			role: role,
+		};
+		setEditEmployee(formInput);
 	};
-	const handleSubmit = async (event) => {
+	const handleSubmit = async () => {
 		event.preventDefault();
 		const employee_id = params.employee_id;
 		const url = `${baseUrl}${endpoint}/${employee_id}`;
@@ -77,6 +77,7 @@ export const EditEmployee = () => {
 						<input
 							name="name"
 							onChange={handleForm}
+							value={editEmployee.name}
 							type="text"
 							className="form-control"
 						/>
@@ -86,6 +87,7 @@ export const EditEmployee = () => {
 						<input
 							name="department"
 							onChange={handleForm}
+							value={editEmployee.department}
 							type="text"
 							className="form-control"
 						/>
@@ -95,6 +97,7 @@ export const EditEmployee = () => {
 						<input
 							name="role"
 							onChange={handleForm}
+							value={editEmployee.role}
 							type="text"
 							className="form-control"
 						/>
