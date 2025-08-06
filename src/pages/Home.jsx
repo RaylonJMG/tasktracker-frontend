@@ -19,7 +19,6 @@ export const Home = ({ login }) => {
 	};
 
 	const handleSubmit = async (event) => {
-		debugger;
 		event.preventDefault();
 		const url = `${baseUrl}${endpoint}`;
 		try {

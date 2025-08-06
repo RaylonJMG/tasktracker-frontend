@@ -49,7 +49,10 @@ export const RegisterUser = () => {
 	return (
 		<>
 			<main className="container">
-				<form onSubmit={handleSubmit}>
+				<h2>User Registration Form</h2>
+				<form
+					className="mt-5"
+					onSubmit={handleSubmit}>
 					<div>
 						<label className="form-label">Username</label>
 						<input
@@ -97,22 +100,21 @@ export const RegisterUser = () => {
 							value={newUser.phone}
 							type="tel"
 							className="form-control"
-							pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
 							placeholder="555-123-4567"
 						/>
 					</div>
 					<br />
-					<input
+					<button
 						type="submit"
 						className="btn btn-primary">
 						Save Data
-					</input>
-					<button
-						className="btn btn-danger"
-						onClick={handleReturn}>
-						Return
 					</button>
 				</form>
+				<button
+					className="btn btn-danger"
+					onClick={handleReturn}>
+					Return
+				</button>
 			</main>
 		</>
 	);
