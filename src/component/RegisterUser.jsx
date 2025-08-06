@@ -44,7 +44,7 @@ export const RegisterUser = () => {
 		newUser.phone = event.target.value;
 	};
 	const handleReturn = () => {
-		navigate("/login");
+		navigate("/");
 	};
 	return (
 		<>
@@ -54,6 +54,7 @@ export const RegisterUser = () => {
 						<label className="form-label">Username</label>
 						<input
 							onChange={handleUsername}
+							value={newUser.username}
 							type="text"
 							className="form-control"
 							required
@@ -63,6 +64,7 @@ export const RegisterUser = () => {
 						<label className="form-label">Password</label>
 						<input
 							onChange={handlePassword}
+							value={newUser.password}
 							type="password"
 							className="form-control"
 							required
@@ -72,6 +74,7 @@ export const RegisterUser = () => {
 						<label className="form-label">First Name</label>
 						<input
 							onChange={handleFirst_Name}
+							value={newUser.first_name}
 							type="text"
 							className="form-control"
 						/>
@@ -80,26 +83,30 @@ export const RegisterUser = () => {
 						<label className="form-label">Last Name</label>
 						<input
 							onChange={handleLast_Name}
+							value={newUser.last_name}
 							type="text"
 							className="form-control"
 						/>
 					</div>
 					<div>
-						<label className="form-label">Phone</label>
+						<label className="form-label">
+							<i className="bi bi-telephone"></i>Phone
+						</label>
 						<input
 							onChange={handlePhone}
-							type="text"
+							value={newUser.phone}
+							type="tel"
 							className="form-control"
-							placeholder="5551234567"
+							pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+							placeholder="555-123-4567"
 						/>
 					</div>
 					<br />
-					<button
-						onClick={handleReturn}
+					<input
 						type="submit"
 						className="btn btn-primary">
 						Save Data
-					</button>
+					</input>
 					<button
 						className="btn btn-danger"
 						onClick={handleReturn}>

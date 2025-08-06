@@ -19,6 +19,7 @@ export const Home = ({ login }) => {
 	};
 
 	const handleSubmit = async (event) => {
+		debugger;
 		event.preventDefault();
 		const url = `${baseUrl}${endpoint}`;
 		try {
@@ -47,7 +48,7 @@ export const Home = ({ login }) => {
 			<div className="container vh-100 d-flex align-items-center justify-content-center">
 				<div
 					className="card p-4"
-					style={{ maxWidth: "60%", width: "100%" }}>
+					style={{ maxWidth: "80%", width: "100%" }}>
 					<h3 className="text-center mb-2">User Log In</h3>
 					<form onSubmit={handleSubmit}>
 						<div className="mb-3">
@@ -63,7 +64,7 @@ export const Home = ({ login }) => {
 						<div className="mb-3">
 							<label className="form-label">Password</label>
 							<input
-								name="password"
+								name="current-password"
 								onChange={handleForm}
 								type="password"
 								className="form-control"

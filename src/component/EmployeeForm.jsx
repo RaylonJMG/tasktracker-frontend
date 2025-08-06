@@ -12,7 +12,7 @@ const EmployeeForm = () => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		const url = `${baseUrl}${endpoint}/${employee_id}`;
+		const url = `${baseUrl}${endpoint}`;
 		const token = localStorage.getItem("token");
 		const result = await fetch(url, {
 			method: "POST",
@@ -38,13 +38,14 @@ const EmployeeForm = () => {
 
 	return (
 		<>
-			<h1>Employee Form</h1>
+			<h1>Add New Employee</h1>
 			<main className="container">
 				<form onSubmit={handleSubmit}>
 					<div>
 						<label className="form-label">Name</label>
 						<input
 							onChange={handleName}
+							value={newEmployee.name}
 							type="text"
 							className="form-control"
 						/>
@@ -53,6 +54,7 @@ const EmployeeForm = () => {
 						<label className="form-label">Department</label>
 						<input
 							onChange={handleDepartment}
+							value={newEmployee.department}
 							type="text"
 							className="form-control"
 						/>
@@ -61,6 +63,7 @@ const EmployeeForm = () => {
 						<label className="form-label">Role</label>
 						<input
 							onChange={handleRole}
+							value={newEmployee.role}
 							type="text"
 							className="form-control"
 						/>
@@ -68,8 +71,9 @@ const EmployeeForm = () => {
 					<br />
 					<button
 						type="submit"
-						className="btn btn-primary">
-						Save Data
+						name="Save"
+						className="btn btn-secondary">
+						<i className="bi bi-floppy"> Save Data</i>
 					</button>
 				</form>
 			</main>

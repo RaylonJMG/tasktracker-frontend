@@ -30,6 +30,10 @@ function App() {
 						element={<Home login={setLoggedIn} />}
 					/>
 					<Route
+						path="/login"
+						element={<Home login={setLoggedIn} />}
+					/>
+					<Route
 						path="/register"
 						element={<RegisterUser />}
 					/>

@@ -8,7 +8,11 @@
 		"build": "vite build",
 		"lint": "eslint .",
 		"preview": "vite preview",
-		"start-vite-server": "npm run dev"
+		"start-vite-server": "npm run dev",
+		"deploy": "npm run build && npm run s3-upload && npm run update-cloudfront",
+		"------------------": "-------------------",
+		"s3-upload": "aws s3 cp ./dist/ s3://tasks-raylon.codex-p4-2025.click/ --recursive",
+		"update-cloudfront": "aws cloudfront create-invalidation --distribution-id E3D4Y5Q6ZSFEIU --paths '/*'"
 	},
 	"dependencies": {
 		"react": "^19.1.0",
