@@ -10,7 +10,6 @@ export const EmployeeTable = () => {
 	const [employee, setEmployee] = useState([]);
 
 	const getEmployee = async () => {
-		const { employee_id } = params;
 		const url = baseUrl + endpoint;
 		const token = localStorage.getItem("token");
 		const result = await fetch(url, {

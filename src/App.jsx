@@ -6,6 +6,7 @@ import { Tasks } from "./pages/Tasks.jsx";
 import { NavBar } from "./component/NavBar.jsx";
 import { EditEmployee } from "./component/EditEmployee.jsx";
 import { RegisterUser } from "./component/RegisterUser.jsx";
+//import { ProtectedRoutes } from "./component/ProtectedRoutes.jsx";
 
 function App() {
 	const [isLoggedIn, setLoggedIn] = useState(false);
@@ -22,7 +23,7 @@ function App() {
 	return (
 		<>
 			<BrowserRouter>
-				{isLoggedIn && <NavBar login={setLoggedIn} />}
+				<NavBar login={setLoggedIn} />
 				<Routes>
 					<Route
 						path="/"
@@ -32,30 +33,18 @@ function App() {
 						path="/register"
 						element={<RegisterUser />}
 					/>
-					{isLoggedIn && (
-						<Route
-							path="/employee"
-							element={<Employee />}
-						/>
-					)}
-					{isLoggedIn && (
-						<Route
-							path="/editEmployee/:employee_id"
-							element={<EditEmployee />}
-						/>
-					)}
-					{isLoggedIn && (
-						<Route
-							path="/tasks"
-							element={<Tasks />}
-						/>
-					)}
-					{isLoggedIn && (
-						<Route
-							path="/tasks/:employee_id"
-							element={<Tasks />}
-						/>
-					)}
+					<Route
+						path="/employee"
+						element={<Employee />}
+					/>
+					<Route
+						path="/editEmployee/:employee_id"
+						element={<EditEmployee />}
+					/>
+					<Route
+						path="/tasks/:employee_id"
+						element={<Tasks />}
+					/>
 				</Routes>
 			</BrowserRouter>
 		</>

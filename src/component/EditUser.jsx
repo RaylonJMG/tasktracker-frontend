@@ -104,13 +104,13 @@ export const EditUser = () => {
 							className="form-control"
 						/>
 					</div>
-					<button
-						type="submit"
-						name="Save"
-						className="btn btn-primary">
-						<i className="bi bi-floppy">Save Data</i>
-					</button>
 				</form>
+				<button
+					type="submit"
+					name="Save"
+					className="btn btn-primary">
+					<i className="bi bi-floppy">Save Data</i>
+				</button>
 			</main>
 		</>
 	);
