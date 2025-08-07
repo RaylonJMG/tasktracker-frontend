@@ -38,7 +38,7 @@ function App() {
 						element={<Employee />}
 					/>
 					<Route
-						path="/editEmployee/:employee_id"
+						path="/employee/:employee_id"
 						element={<EditEmployee />}
 					/>
 					<Route
