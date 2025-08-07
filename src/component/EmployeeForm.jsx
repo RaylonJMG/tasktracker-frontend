@@ -45,7 +45,6 @@ const EmployeeForm = () => {
 						<label className="form-label">Name</label>
 						<input
 							onChange={handleName}
-							value={newEmployee.name}
 							type="text"
 							className="form-control"
 						/>
@@ -54,7 +53,6 @@ const EmployeeForm = () => {
 						<label className="form-label">Department</label>
 						<input
 							onChange={handleDepartment}
-							value={newEmployee.department}
 							type="text"
 							className="form-control"
 						/>
@@ -63,7 +61,6 @@ const EmployeeForm = () => {
 						<label className="form-label">Role</label>
 						<input
 							onChange={handleRole}
-							value={newEmployee.role}
 							type="text"
 							className="form-control"
 						/>
@@ -72,8 +69,8 @@ const EmployeeForm = () => {
 					<button
 						type="submit"
 						name="Save"
-						className="btn btn-secondary">
-						<i className="bi bi-floppy"> Save Data</i>
+						className="btn btn-primary w-100">
+						<i className="bi bi-floppy"> Save Data </i>
 					</button>
 				</form>
 			</main>

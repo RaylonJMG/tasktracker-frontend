@@ -49,7 +49,11 @@ export const RegisterUser = () => {
 	return (
 		<>
 			<main className="container">
-				<h2>User Registration Form</h2>
+				<h1
+					className="mt-4"
+					style={{ textDecorationLine: "underline", textAlign: "center" }}>
+					User Registration Form
+				</h1>
 				<form
 					className="mt-5"
 					onSubmit={handleSubmit}>
@@ -57,27 +61,22 @@ export const RegisterUser = () => {
 						<label className="form-label">Username</label>
 						<input
 							onChange={handleUsername}
-							value={newUser.username}
 							type="text"
 							className="form-control"
-							required
 						/>
 					</div>
 					<div>
 						<label className="form-label">Password</label>
 						<input
 							onChange={handlePassword}
-							value={newUser.password}
 							type="password"
 							className="form-control"
-							required
 						/>
 					</div>
 					<div>
 						<label className="form-label">First Name</label>
 						<input
 							onChange={handleFirst_Name}
-							value={newUser.first_name}
 							type="text"
 							className="form-control"
 						/>
@@ -86,18 +85,16 @@ export const RegisterUser = () => {
 						<label className="form-label">Last Name</label>
 						<input
 							onChange={handleLast_Name}
-							value={newUser.last_name}
 							type="text"
 							className="form-control"
 						/>
 					</div>
 					<div>
 						<label className="form-label">
-							<i className="bi bi-telephone"></i>Phone
+							<i className="bi bi-telephone"></i> Phone
 						</label>
 						<input
 							onChange={handlePhone}
-							value={newUser.phone}
 							type="tel"
 							className="form-control"
 							placeholder="555-123-4567"
@@ -106,12 +103,13 @@ export const RegisterUser = () => {
 					<br />
 					<button
 						type="submit"
-						className="btn btn-primary">
-						Save Data
+						name="Save"
+						className="btn btn-primary w-100">
+						<i className="bi bi-floppy"> Save Data </i>
 					</button>
 				</form>
 				<button
-					className="btn btn-danger"
+					className="btn btn-danger mt-2 w-100"
 					onClick={handleReturn}>
 					Return
 				</button>

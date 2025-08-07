@@ -38,7 +38,7 @@ export const Home = ({ login }) => {
 				setResultLogin("Invalid Credentials. Please try again.");
 			}
 		} catch (error) {
-			setResultLogin("Network error. Please try again later.");
+			setResultLogin(error);
 		}
 	};
 
@@ -49,7 +49,9 @@ export const Home = ({ login }) => {
 					className="card p-4"
 					style={{ maxWidth: "80%", width: "100%" }}>
 					<h3 className="text-center mb-2">User Log In</h3>
-					<form onSubmit={handleSubmit}>
+					<form
+						className="mt-2"
+						onSubmit={handleSubmit}>
 						<div className="mb-3">
 							<label className="form-label">Username</label>
 							<input
@@ -63,7 +65,7 @@ export const Home = ({ login }) => {
 						<div className="mb-3">
 							<label className="form-label">Password</label>
 							<input
-								name="current-password"
+								name="password"
 								onChange={handleForm}
 								type="password"
 								className="form-control"

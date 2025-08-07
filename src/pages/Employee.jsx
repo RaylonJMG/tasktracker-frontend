@@ -5,9 +5,9 @@ import { EmployeeTable } from "../component/EmployeeTable";
 export const Employee = () => {
 	return (
 		<>
-			<EmployeeTable />
-			<hr />
 			<EmployeeForm />
+			<hr />
+			<EmployeeTable />
 		</>
 	);
 };
