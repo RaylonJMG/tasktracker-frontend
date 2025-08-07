@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
-const endpoint = "editEmployee";
+const endpoint = "employee";
 
 export const EditEmployee = () => {
 	const navigate = useNavigate();
