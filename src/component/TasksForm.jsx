@@ -71,13 +71,18 @@ export const TasksForm = () => {
 							type="text"
 						/>
 					</div>
-					<button className="btn btn-primary">Save</button>
 					<button
-						className="btn btn-danger m-3"
-						onClick={handleReturn}>
-						Cancel
+						type="submit"
+						name="Save"
+						className="btn btn-primary w-100 mt-3">
+						<i className="bi bi-floppy"> Save Data </i>
 					</button>
 				</form>
+				<button
+					className="btn btn-danger mt-2 w-100"
+					onClick={handleReturn}>
+					Cancel
+				</button>
 			</main>
 		</>
 	);
