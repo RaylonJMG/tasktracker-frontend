@@ -46,7 +46,8 @@ export const EditEmployee = () => {
 		};
 		setEditEmployee(formInput);
 	};
-	const handleSubmit = async () => {
+
+	const handleSubmit = async (event) => {
 		event.preventDefault();
 		const employee_id = params.employee_id;
 		const url = `${baseUrl}${endpoint}/${employee_id}`;
@@ -106,7 +107,7 @@ export const EditEmployee = () => {
 					<button
 						type="submit"
 						name="Save"
-						className="btn btn-secondary">
+						className="btn btn-secondary w-100">
 						<i className="bi bi-floppy"> Save Data</i>
 					</button>
 				</form>
