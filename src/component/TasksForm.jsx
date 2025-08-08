@@ -27,7 +27,7 @@ export const TasksForm = () => {
 		const token = localStorage.getItem("token");
 		const url = `${baseUrl}${endpoint}/${employee_id}`;
 		const result = await fetch(url, {
-			method: "PUT",
+			method: "POST",
 			body: JSON.stringify(newTasks),
 			headers: {
 				"Content-Type": "application/json",
