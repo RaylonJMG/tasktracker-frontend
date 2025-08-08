@@ -35,7 +35,7 @@ export const NavBar = ({ login }) => {
 						className="collapse navbar-collapse"
 						id="navbarColor03">
 						<ul className="navbar-nav me-auto">
-							<li className="nav-item">
+							<li>
 								<Link
 									className="nav-link"
 									to="/employee">

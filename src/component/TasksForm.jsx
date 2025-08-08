@@ -6,30 +6,37 @@ const endpoint = "tasks";
 
 export const TasksForm = () => {
 	const navigate = useNavigate();
-	const params = useParams();
-	const { task_id } = params;
-	const [tasks, setTasks] = useState({ task_id: task_id });
+	const { employee_id } = useParams();
+	const [newTasks, setNewTasks] = useState({
+		description: "",
+		status: "",
+	});
 
 	const handleForm = (event) => {
-		event.preventDefault();
-		const inputName = event.target.name;
-		const inputValue = event.target.value;
-		tasks[inputName] = inputValue;
+		const { name, value } = event.target;
+		const formInput = {
+			description: newTasks.description,
+			status: newTasks.status,
+		};
+		formInput[name] = value;
+		setNewTasks(formInput);
 	};
+
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		const url = `${baseUrl}${endpoint}/${task_id}`;
 		const token = localStorage.getItem("token");
+		const url = `${baseUrl}${endpoint}/${employee_id}`;
 		const result = await fetch(url, {
-			method: "POST",
-			body: JSON.stringify(tasks),
+			method: "PUT",
+			body: JSON.stringify(newTasks),
 			headers: {
 				"Content-Type": "application/json",
 				authorization: token,
 			},
 		});
 		const data = await result.json();
-		setTasks(data);
+		setNewTasks({ description: "", status: "" });
+		navigate(`/tasks/${employee_id}`);
 		window.location.reload();
 	};
 
@@ -39,26 +46,17 @@ export const TasksForm = () => {
 
 	return (
 		<>
-			<h1 className="text-center">Task Management</h1>
-			<main className="container">
+			<main className="container mb-2">
+				<h1 className="text-center">Add Tasks for #{employee_id}</h1>
 				<form
 					onSubmit={handleSubmit}
 					className="mt-5">
-					<div>
-						<label className="form-label">Task Name</label>
-						<input
-							className="form-control"
-							onChange={handleForm}
-							name="task_name"
-							type="text"
-						/>
-					</div>
 					<div>
 						<label className="form-label">Description</label>
 						<input
 							className="form-control"
 							onChange={handleForm}
-							name="task_description"
+							name="description"
 							type="text"
 						/>
 					</div>
@@ -67,7 +65,7 @@ export const TasksForm = () => {
 						<input
 							className="form-control"
 							onChange={handleForm}
-							name="task_status"
+							name="status"
 							type="text"
 						/>
 					</div>
@@ -81,7 +79,7 @@ export const TasksForm = () => {
 				<button
 					className="btn btn-danger mt-2 w-100"
 					onClick={handleReturn}>
-					Cancel
+					Return
 				</button>
 			</main>
 		</>

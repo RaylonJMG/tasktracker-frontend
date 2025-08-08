@@ -6,7 +6,7 @@ const endpoint = "employee";
 
 export const EmployeeTable = () => {
 	const navigate = useNavigate();
-	const params = useParams();
+	const { employee_id } = useParams();
 	const [employee, setEmployee] = useState([]);
 
 	const getEmployee = async () => {
@@ -22,7 +22,7 @@ export const EmployeeTable = () => {
 		setEmployee(data);
 	};
 	const handleEdit = (id) => {
-		navigate(`/editEmployee/${id}`);
+		navigate(`/employee/${id}`);
 	};
 	const handleDelete = async (id) => {
 		const url = `${baseUrl}${endpoint}/${id}`;
@@ -36,8 +36,8 @@ export const EmployeeTable = () => {
 		const data = await result.json();
 		window.location.reload();
 	};
-	const handleTasks = (id) => {
-		navigate(`/tasks/${id}`);
+	const handleAddTasks = (employee_id) => {
+		navigate(`/tasks/add/${employee_id}`);
 	};
 
 	useEffect(() => {
@@ -80,9 +80,9 @@ export const EmployeeTable = () => {
 									</button>
 									<button
 										type="button"
-										onClick={() => handleTasks(item.employee_id)}
+										onClick={() => handleAddTasks(item.employee_id)}
 										className="btn btn-info">
-										Tasks
+										Add Tasks
 									</button>
 								</td>
 							</tr>

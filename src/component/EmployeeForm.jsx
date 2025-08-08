@@ -24,6 +24,7 @@ const EmployeeForm = () => {
 		});
 		const data = await result.json();
 		setNewEmployee(data);
+		window.location.reload();
 	};
 
 	const handleName = (event) => {
