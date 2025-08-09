@@ -26,6 +26,7 @@ export const RegisterUser = () => {
 		});
 		const data = await result.json();
 		setNewUser(data);
+		navigate("/login");
 	};
 
 	const handleUsername = (event) => {

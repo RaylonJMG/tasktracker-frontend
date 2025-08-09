@@ -7,7 +7,6 @@ const endpoint2 = "employee";
 
 export const TasksTable = () => {
 	const { employee_id } = useParams();
-	console.log("Current employee_id from useParams:", employee_id);
 	const navigate = useNavigate();
 	const [tasks, setTasks] = useState([]);
 	const [employee, setEmployee] = useState({});
@@ -44,7 +43,6 @@ export const TasksTable = () => {
 	const getEmployeeById = async () => {
 		const token = localStorage.getItem("token");
 		const url = `${baseUrl}${endpoint2}/${employee_id}`;
-		console.log("Fetching employee from:", url);
 		const result = await fetch(url, {
 			headers: {
 				authorization: token,
@@ -53,25 +51,9 @@ export const TasksTable = () => {
 		const data = await result.json();
 		setEmployee(data[0]);
 	};
-	const handleTaskEdit = () => {
-		navigate(`/tasks/editTasks`);
-	};
-	const handleTaskDelete = async (task_id) => {
-		const url = `${baseUrl}${endpoint}/${task_id}`;
-		const token = localStorage.getItem("token");
-		const result = await fetch(url, {
-			method: "DELETE",
-			headers: {
-				authorization: token,
-			},
-		});
-		const data = await result.json();
-		window.location.reload();
-	};
 
 	useEffect(() => {
 		getAllTasks();
-		//console.log("EMPLOYEE ID BEING SENT:", employee_id);
 		//getTasksById();
 		getEmployeeById();
 	}, []);
@@ -86,8 +68,6 @@ export const TasksTable = () => {
 							<th>Task Description</th>
 							<th>Status</th>
 							<th>Employee Assigned</th>
-							<th>Employee ID</th>
-							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody className="table-group-divider">
@@ -96,19 +76,6 @@ export const TasksTable = () => {
 								<td>{item.description}</td>
 								<td>{item.status}</td>
 								<td>{item.employee}</td>
-								<td>{item.employee_id}</td>
-								<td>
-									<button
-										onClick={() => handleTaskEdit(item.tasks_id)}
-										className="btn btn-primary w-100 me-2">
-										Edit
-									</button>
-									<button
-										onClick={() => handleTaskDelete(item.tasks_id)}
-										className="btn btn-danger w-100 mt-2">
-										Delete
-									</button>
-								</td>
 							</tr>
 						))}
 					</tbody>

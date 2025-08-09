@@ -35,18 +35,14 @@ export const TasksForm = () => {
 				"Content-Type": "application/json",
 				authorization: token,
 			},
-			body: JSON.stringify({
-				description: "",
-				status: "",
-				employeeId: employeeId,
-			}),
+			body: JSON.stringify(tasks),
 		});
 		const data = await result.json();
 		console.log(data);
 		setTasks({ description: "", status: "", employee_id });
 
-		window.location.reload();
 		navigate(`/employee`);
+		window.location.reload();
 	};
 
 	const handleReturn = () => {
@@ -77,16 +73,6 @@ export const TasksForm = () => {
 							onChange={handleForm}
 							value={tasks.status}
 							name="status"
-							type="text"
-						/>
-					</div>
-					<div>
-						<label className="form-label">Employee ID</label>
-						<input
-							className="form-control"
-							onChange={handleForm}
-							value={employee_id}
-							name="employee_id"
 							type="text"
 						/>
 					</div>

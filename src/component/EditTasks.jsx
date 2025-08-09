@@ -94,16 +94,6 @@ export const EditTasks = () => {
 							className="form-control"
 						/>
 					</div>
-					<div>
-						<label className="form-label">Employee ID</label>
-						<input
-							name="employee_id"
-							value={editTasks.employee_id}
-							onChange={handleForm}
-							type="text"
-							className="form-control"
-						/>
-					</div>
 					<button
 						type="submit"
 						name="Save"
