@@ -19,8 +19,10 @@ export const EmployeeTable = () => {
 			},
 		});
 		const data = await result.json();
+		console.log(data);
 		setEmployee(data);
 	};
+
 	const handleEdit = (id) => {
 		navigate(`/employee/${id}`);
 	};
@@ -36,8 +38,9 @@ export const EmployeeTable = () => {
 		const data = await result.json();
 		window.location.reload();
 	};
-	const handleAddTasks = (employee_id) => {
-		navigate(`/tasks/add/${employee_id}`);
+
+	const handleAddTasks = (id) => {
+		navigate(`/tasks/add/${id}`);
 	};
 
 	useEffect(() => {
@@ -51,7 +54,6 @@ export const EmployeeTable = () => {
 				<table className="table container text-align:center table-responsive">
 					<thead>
 						<tr>
-							<th>ID</th>
 							<th>Name</th>
 							<th>Department</th>
 							<th>Role</th>
@@ -61,7 +63,6 @@ export const EmployeeTable = () => {
 					<tbody className="table-group-divider">
 						{employee.map((item) => (
 							<tr key={item.employee_id}>
-								<td>{item.employee_id}</td>
 								<td>{item.name}</td>
 								<td>{item.department}</td>
 								<td>{item.role}</td>
@@ -69,7 +70,7 @@ export const EmployeeTable = () => {
 									<button
 										type="button"
 										onClick={() => handleEdit(item.employee_id)}
-										className="btn btn-primary">
+										className="btn btn-primary w-40">
 										<i className="bi bi-pencil-square"></i>
 									</button>
 									<button
@@ -82,6 +83,7 @@ export const EmployeeTable = () => {
 										type="button"
 										onClick={() => handleAddTasks(item.employee_id)}
 										className="btn btn-info">
+										<i className="bi bi-plus-square"></i>
 										Add Tasks
 									</button>
 								</td>

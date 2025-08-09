@@ -70,8 +70,8 @@ export const EditEmployee = () => {
 
 	return (
 		<>
-			<h1>Edit Employee Form</h1>
-			<main className="container">
+			<main className="container mt-2">
+				<h1>Edit Employee Form</h1>
 				<form onSubmit={handleSubmit}>
 					<div>
 						<label className="form-label">Name</label>

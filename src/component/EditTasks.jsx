@@ -6,11 +6,11 @@ const endpoint = "tasks";
 
 export const EditTasks = () => {
 	const navigate = useNavigate();
-	const { tasks_id } = useParams();
+	const params = useParams();
 	const [editTasks, setEditTasks] = useState({
 		description: "",
 		status: "",
-		employee_id: "",
+		employee_id: employee_id,
 	});
 
 	const handleForm = (event) => {
@@ -19,6 +19,7 @@ export const EditTasks = () => {
 		const formInput = {
 			description: editTasks.description,
 			status: editTasks.status,
+			employee_id: editTasks.employee_id,
 		};
 		formInput[name] = value;
 		setEditTasks(formInput);
@@ -26,7 +27,7 @@ export const EditTasks = () => {
 
 	const getTasksById = async () => {
 		const token = localStorage.getItem("token");
-		const url = `${baseUrl}${endpoint}/${tasks_id}`;
+		const url = `${baseUrl}${endpoint}/${task_id}`;
 		const result = await fetch(url, {
 			method: "GET",
 			headers: {
@@ -36,17 +37,18 @@ export const EditTasks = () => {
 		const data = await result.json();
 		const { description, status, employee_id } = data[0];
 
-		setEditTasks({
-			description,
-			status,
-			employee_id,
-		});
+		const formInput = {
+			description: description,
+			status: status,
+			employee_id: employee_id,
+		};
+		setEditTasks(formInput);
 	};
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		const tasks_id = params.tasks_id;
-		const url = `${baseUrl}${endpoint}/${tasks_id}`;
+		const employee_id = params.employee_id;
+		const url = `${baseUrl}${endpoint}/${employee_id}`;
 		const token = localStorage.getItem("token");
 		const result = await fetch(url, {
 			method: "PUT",
@@ -57,8 +59,8 @@ export const EditTasks = () => {
 			},
 		});
 		const data = await result.json();
-		navigate("/tasks/${editTasks.employee_id}");
-		window.location.reload();
+		navigate("/tasks");
+		//window.location.reload();
 	};
 
 	useEffect(() => {
@@ -92,11 +94,21 @@ export const EditTasks = () => {
 							className="form-control"
 						/>
 					</div>
+					<div>
+						<label className="form-label">Employee ID</label>
+						<input
+							name="employee_id"
+							value={editTasks.employee_id}
+							onChange={handleForm}
+							type="text"
+							className="form-control"
+						/>
+					</div>
 					<button
 						type="submit"
 						name="Save"
-						className="btn btn-primary w-100">
-						<i className="bi bi-floppy">Save Data</i>
+						className="btn btn-secondary w-100 mt-3">
+						<i className="bi bi-floppy"> Save Data </i>
 					</button>
 				</form>
 			</main>

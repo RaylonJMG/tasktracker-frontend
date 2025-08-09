@@ -7,47 +7,56 @@ const endpoint = "tasks";
 export const TasksForm = () => {
 	const navigate = useNavigate();
 	const { employee_id } = useParams();
-	const [newTasks, setNewTasks] = useState({
+	const [tasks, setTasks] = useState({
 		description: "",
 		status: "",
+		employee_id: employee_id,
 	});
 
 	const handleForm = (event) => {
 		const { name, value } = event.target;
 		const formInput = {
-			description: newTasks.description,
-			status: newTasks.status,
+			description: tasks.description,
+			status: tasks.status,
+			employee_id: employee_id,
 		};
 		formInput[name] = value;
-		setNewTasks(formInput);
+		console.log(name);
+		setTasks(formInput);
 	};
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		const token = localStorage.getItem("token");
-		const url = `${baseUrl}${endpoint}/${employee_id}`;
+		const url = `${baseUrl}${endpoint}`;
 		const result = await fetch(url, {
 			method: "POST",
-			body: JSON.stringify(newTasks),
 			headers: {
 				"Content-Type": "application/json",
 				authorization: token,
 			},
+			body: JSON.stringify({
+				description: "",
+				status: "",
+				employeeId: employeeId,
+			}),
 		});
 		const data = await result.json();
-		setNewTasks({ description: "", status: "" });
-		navigate(`/tasks/${employee_id}`);
+		console.log(data);
+		setTasks({ description: "", status: "", employee_id });
+
 		window.location.reload();
+		navigate(`/employee`);
 	};
 
 	const handleReturn = () => {
-		navigate("/employee");
+		navigate("/tasks");
 	};
 
 	return (
 		<>
 			<main className="container mb-2">
-				<h1 className="text-center">Add Tasks for #{employee_id}</h1>
+				<h1 className="text-center"> Add Tasks</h1>
 				<form
 					onSubmit={handleSubmit}
 					className="mt-5">
@@ -56,6 +65,7 @@ export const TasksForm = () => {
 						<input
 							className="form-control"
 							onChange={handleForm}
+							value={tasks.description}
 							name="description"
 							type="text"
 						/>
@@ -65,7 +75,18 @@ export const TasksForm = () => {
 						<input
 							className="form-control"
 							onChange={handleForm}
+							value={tasks.status}
 							name="status"
+							type="text"
+						/>
+					</div>
+					<div>
+						<label className="form-label">Employee ID</label>
+						<input
+							className="form-control"
+							onChange={handleForm}
+							value={employee_id}
+							name="employee_id"
 							type="text"
 						/>
 					</div>
@@ -77,6 +98,8 @@ export const TasksForm = () => {
 					</button>
 				</form>
 				<button
+					type="button"
+					name="Return"
 					className="btn btn-danger mt-2 w-100"
 					onClick={handleReturn}>
 					Return
