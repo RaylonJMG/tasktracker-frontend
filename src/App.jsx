@@ -60,7 +60,7 @@ function App() {
 						/>
 						<Route
 							path="/tasks"
-							element={<Tasks />}
+							element={<TasksTable />}
 						/>
 						<Route
 							path="/tasks/:employee_id"
@@ -71,7 +71,7 @@ function App() {
 							element={<TasksForm />}
 						/>
 						<Route
-							path="/tasks/edit/:employee_id"
+							path="/tasks/editTasks"
 							element={<EditTasks />}
 						/>
 					</Route>
