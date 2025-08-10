@@ -44,44 +44,48 @@ export const Home = ({ login }) => {
 
 	return (
 		<>
-			<div className="container vh-100 d-flex align-items-center justify-content-center">
-				<div
-					className="card p-4"
-					style={{ maxWidth: "80%", width: "100%" }}>
-					<h3 className="text-center mb-2">User Log In</h3>
-					<form
-						className="mt-2"
-						onSubmit={handleSubmit}>
-						<div className="mb-3">
-							<label className="form-label">Username</label>
-							<input
-								name="username"
-								onChange={handleForm}
-								type="text"
-								className="form-control"
-								required
-							/>
-						</div>
-						<div className="mb-3">
-							<label className="form-label">Password</label>
-							<input
-								name="password"
-								onChange={handleForm}
-								type="password"
-								className="form-control"
-								required
-							/>
-						</div>
-						<p>{resultLogIn}</p>
-						<button className="btn btn-primary w-100">Log In</button>
-					</form>
-					<button
-						className="btn btn-secondary mt-3 w-100"
-						onClick={() => navigate("/register")}>
-						Register
-					</button>
+			<main className="text-center justify-content-center">
+				<h1>Luxe Hotels & Resort</h1>
+				<h2>Employee Management System</h2>
+				<div className="container vh-100 d-flex align-items-center justify-content-center">
+					<div
+						className="card p-4"
+						style={{ maxWidth: "60%", width: "100%" }}>
+						<h3 className="text-center mb-2">User Log In</h3>
+						<form
+							className="mt-2"
+							onSubmit={handleSubmit}>
+							<div className="mb-3">
+								<label className="form-label">Username</label>
+								<input
+									name="username"
+									onChange={handleForm}
+									type="text"
+									className="form-control"
+									required
+								/>
+							</div>
+							<div className="mb-3">
+								<label className="form-label">Password</label>
+								<input
+									name="password"
+									onChange={handleForm}
+									type="password"
+									className="form-control"
+									required
+								/>
+							</div>
+							<p>{resultLogIn}</p>
+							<button className="btn btn-primary w-100">Log In</button>
+						</form>
+						<button
+							className="btn btn-secondary mt-3 w-100"
+							onClick={() => navigate("/register")}>
+							Register
+						</button>
+					</div>
 				</div>
-			</div>
+			</main>
 		</>
 	);
 };
