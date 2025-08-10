@@ -44,7 +44,7 @@ export const Home = ({ login }) => {
 
 	return (
 		<>
-			<main className="text-center justify-content-center">
+			<main className="text-center">
 				<h1>Luxe Hotels & Resort</h1>
 				<h2>Employee Management System</h2>
 				<div className="container vh-100 d-flex align-items-center justify-content-center">
